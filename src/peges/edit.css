@@ -1,0 +1,15 @@
+.item-edit{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.edit-btn{
+    padding: 8px 16px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+}
