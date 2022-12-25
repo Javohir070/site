@@ -13,3 +13,99 @@
     background-color: white;
     color: black;
 }
+.table-body{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table{
+     border-collapse: collapse;
+}
+
+table .table-item th, table .table-item td{
+    /* background: #FFFFFF; */
+    border: 1px solid #ECEEEF;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #337AB7;
+    text-align: start;
+    padding:8px 8px 10px 8px ;
+    font-family: 'Helvetica Neue';
+   
+}
+table .table-item td input{
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    height: 34px;
+    display: inline-block;
+    
+}
+.table-item:nth-child(odd) {
+    background-color: #dddddd ;
+  }
+.bgr{
+    background: #fff !important;
+}
+.id-input{
+    width: 34px;
+}
+table .table-item  .save-btn{
+    background: #D9534F;
+    border: 1px solid #D9534F;
+    border-radius: 4px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 6px 32px;
+    
+
+}
+.table-lest-item .table-title-lest{
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #373A3C;
+
+}
+.icons-item{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    /* color: #337AB7; */
+}
+.table-item select{
+    width: 100%;
+    height: 34px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+}
+.icon-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* width: 100%; */
+    height: 37px;
+}
+.icon-items .seve-btn , .icon-items .del-btn{
+    padding:4px 8px ;
+    background-color: #D9534F;
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-align: center;
+    padding-right:9px;
+    padding-top: 6px;
+    /* border: 2px solid black; */
+}

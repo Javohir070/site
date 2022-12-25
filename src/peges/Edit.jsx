@@ -13,52 +13,48 @@ let users =[
 class Edit extends React.Component{
 constructor(props){
     super(props);
-    this.state= {data: users, edit:{id:"",value:""}};
+    this.state=({data:users, edit:{id:"", value:""}});
 }
     render(){
-        let edit = (id, value)=>{
-           this.setState({edit: { id, value, }});
-        };
-        let itemdelet = (id)=>{
-         let kiy = this.state.data.filter((item) => item.id !== id);
-         console.log(kiy);
-         this.setState({data:kiy});
-        };
-        let handelSave = (id)=>{
-            this.setState({
-                data: this.state.data.map((value)=>{
-                    if (value.id===id) {
-                        return {...value, name:this.state.edit.value};
-                    }else{return value;};
-                })
-            });
-            this.setState({edit:{id:"", value:""}});
+       let Edit = (id, value)=>{
+        this.setState({edit:{id:id, value:value}})
+       };
+       let Seve = (id)=>{
+           this.setState({data:this.state.data.map((value)=>{
+            if (value.id === id) {
+                return {...value, name:this.state.edit.value};
+            }else{return value};
+           })})
+           this.setState({edit:{id:"", value:""}})
+       };
+       let Del = (id)=>{
+        let dels = this.state.data.filter((item)=>item.id!==id);
+        this.setState({data:dels});
+       };
+       let Search = ({target})=>{
+        let kiy = target.value;
+        let searchs = this.state.data.filter(item=>(
+            item.name.includes(kiy)
+        ));
+        this.setState({data:searchs});
+        if (kiy === "") {
+            this.setState({data:users})
         }
-        let serarch = ({target})=>{
-            let kiy = target.value;
-            let serch = this.state.data.filter((item)=>
-              item.name.includes(kiy)
-            );
-            this.setState({data: serch});
-            if (kiy === "") {
-                this.setState({data:users});
-            }
-        }
-        
+       }
         return(
             <>
-            <input type="text" placeholder="search" onChange={serarch} />
+            <input type="text" placeholder="search" onChange={Search} />
             {this.state.data.map((item)=>(
                 <div>
                     {this.state.edit.id === item.id ? (
                         <div className="item-edit">
-                            <input value={this.state.edit.value} onChange={({target})=>this.setState({edit:{...this.state.edit, value: target.value}})}  /><span className="edit-btn" onClick={()=>handelSave(item.id)} >save</span><span onClick={()=>this.setState({edit:{id:"",value: ""}})} className="edit-btn">cancel</span>
+                            <input value={this.state.edit.value} onChange={({target})=>this.setState({edit: {...this.state.edit, value: target.value}})}  /><span className="edit-btn" onClick={()=>Seve(item.id)}  >save</span><span  className="edit-btn" onClick={()=>this.setState({edit:{id:'',value:""}})}>cancel</span>
                         </div>
                     ):(
                         <div className="item-edit">
                             <h4>{item.name}</h4> 
-                            <span className="edit-btn" onClick={()=>itemdelet(item.id)}>delete</span>
-                            <span className="edit-btn" onClick={()=>edit(item.id, item.name)}>edit</span>
+                            <span className="edit-btn" onClick={()=>Del(item.id)} >delete</span>
+                            <span className="edit-btn" onClick={()=>Edit(item.id, item.name)} >edit</span>
                         </div>
                     )}
                 </div>
