@@ -11,7 +11,7 @@ let admin = [
 class AdminElt extends React.Component{
    constructor(props){
     super(props);
-    this.state = {data:admin, edit:{id:"", userid:"",  emailid:"", Id:"", username:"", email:"", ip:"", time:"", login:"",confirmation:"" ,status:""}}
+    this.state = {data:admin, edit:{id:"", userid:"",  emailid:"", Id:"", username:"", email:"", ip:"", time:"", login:"",confirmation:"" ,status:""}, add: {id:7, Id:"", username:"", email:"", ip:"", time:"", login:"",confirmation:"" ,status:""} }
    }
 
     render(){
@@ -35,6 +35,14 @@ class AdminElt extends React.Component{
                 }else{return item;}
             })})
             this.setState({edit:{id:""}})
+       };
+       let hendelAdd = ({target})=>{
+        this.setState({add:{...this.state.add, [target.name]: target.value},});
+       };
+       let add = ()=>{
+        console.log(this.state.add);
+        this.setState({data:[...this.state.data, this.state.add],});
+        this.setState({add:{id:'', Id:"", username:"", email:"", ip:"", time:"", login:"",confirmation:"" ,status:""}})
        }
     return (
         <>
@@ -53,27 +61,28 @@ class AdminElt extends React.Component{
                             <th className="table-title"></th>
                         </tr>
                         <tr className="table-item ">
-                            <td><input className="id-input" value={this.state.edit.Id}   type="text" /></td>
-                            <td><input type="text" value={this.state.edit.username} /></td>
-                            <td><input type="email" value={this.state.edit.email}/></td>
-                            <td><input type="text" value={this.state.edit.ip}/></td>
-                            <td><input type="datetime-local" value={this.state.edit.time} /></td>
-                            <td><input type="datetime-local" value={this.state.edit.login} /></td>
-                            <td><input type="text" value={this.state.edit.confirmation} /></td>
                             <td>
-                                <select name="" id="">
-                                    <option value={this.state.edit.status}>{this.state.edit.status}</option>
-                                    <option value="active" onClick={({targit})=>this.setState({edit:{ status: targit.value}})}>active</option>
+                                <input name="id" className="id-input" value={this.state.add.id} onChange={hendelAdd} type="text" /></td>
+                            <td><input name="username" type="text" value={this.state.add.username} onChange={hendelAdd} /></td>
+                            <td><input name="email" type="email" value={this.state.add.email} onChange={hendelAdd}/></td>
+                            <td><input name="ip" type="text" value={this.state.add.ip} onChange={hendelAdd}/></td>
+                            <td><input name="time" type="datetime-local" value={this.state.add.time} onChange={hendelAdd} /></td>
+                            <td><input name="login" type="datetime-local" value={this.state.add.login} onChange={hendelAdd} /></td>
+                            <td><input name="confirmation" type="text" value={this.state.add.confirmation}  onChange={hendelAdd}/></td>
+                            <td>
+                                <select name="status" onChange={hendelAdd} id="">
+                                    <option value='va'>ads</option>
+                                    <option value="active">active</option>
                                     <option value="no active">no active</option>
                                 </select>
                             </td>
-                            <td><span className="save-btn"> Add</span></td>
+                            <td><span className="save-btn" onClick={add}> Add</span></td>
                         </tr>
                         {this.state.data.map((item)=>(
                             <>
                                 {this.state.edit.id === item.id ? (
                                             <tr className="table-item ">
-                                            <td><input className="id-input" value={this.state.edit.Id} onChange={({target})=>this.setState({edit: {...this.state.edit, Id: target.value}})}  type="text" /></td>
+                                            <td><input className="id-input" value={this.state.edit.Id} onChange={({target})=>this.setState({edit: { Id: target.value}})}  type="text" /></td>
                                             <td><input type="text" value={this.state.edit.username} onChange={({target})=>this.setState({edit: {...this.state.edit, username: target.value}})}/></td>
                                             <td><input type="email" value={this.state.edit.email} onChange={({target})=>this.setState({edit: {...this.state.edit, email: target.value}})}/></td>
                                             <td><input type="text" value={this.state.edit.ip} onChange={({target})=>this.setState({edit: {...this.state.edit, ip: target.value}})}/></td>
