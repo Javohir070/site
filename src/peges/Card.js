@@ -12,9 +12,11 @@ class Card extends React.Component{
     render(){
        return (
        <div>
+        <div>
             {data.map(item=>(
                 <Cards img={item.img} text={item.taxt} narx={item.narx} del={item.del} />
-             ))}
+                ))}
+                </div>
         </div>);
        
            
